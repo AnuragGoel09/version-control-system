@@ -26,6 +26,7 @@ def handle_reset(repo_path):
         print("RESET SUCCESSFUL")
     else:
         print("VCS NOT INITIALIZED")
+        print("hello")
 
 def handle_commit(repo_path,message):
     repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
