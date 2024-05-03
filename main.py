@@ -1,5 +1,5 @@
 from bin import pre_init
-from bin import init , add
+from bin import init , add ,commit
 import sys
 VCS_PATH="/mnt/d/Projects/version-control-system"
 
@@ -23,6 +23,15 @@ def handle_reset(repo_path):
     repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
     if "repo_id" in repo_info:
         add.reset(VCS_PATH=VCS_PATH,repo_id=repo_info["repo_id"])
+        print("RESET SUCCESSFUL")
+    else:
+        print("VCS NOT INITIALIZED")
+
+def handle_commit(repo_path,message):
+    repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
+    if "repo_id" in repo_info:
+        print("helo")
+        commit.commit(VCS_PATH=VCS_PATH,repo_id=repo_info["repo_id"],message=message)
     else:
         print("VCS NOT INITIALIZED")
 
@@ -39,6 +48,17 @@ if __name__=="__main__":
             handle_add(repo_path,args[1:])
         elif args[0]=="reset" and len(args)==1:
             handle_reset(repo_path)
+        elif args[0]=="commit":
+            message=""
+            if(len(args)==2 and args[1]=="-m"):
+                print("PLEASE PROVIDE MESSAGE")
+                exit(0)
+            elif(len(args)>2 and args[1]=="-m"):
+                for i in args[2:]:
+                    message+=i+" "
+            else:
+                raise Exception()
+            handle_commit(repo_path,message)        
         else:
             raise Exception()
 

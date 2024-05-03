@@ -24,8 +24,6 @@ def add_files(VCS_PATH,repo_id,files):
     
     files=repo_to_files(files)
     add_status=get_add_status(VCS_PATH,repo_id)    
-    for i in files:
-        print(i)
     union_list=list(set(files) | set(add_status))
 
     file_path=VCS_PATH+"/jsons/add_status.json"
@@ -35,7 +33,6 @@ def add_files(VCS_PATH,repo_id,files):
     data[repo_id]=union_list
     with open(file_path,"w") as f:
         json.dump(data,f)
-    print("ADD SUCCESSFUL")
 
 def reset(VCS_PATH,repo_id):
     file_path=VCS_PATH+"/jsons/add_status.json"
@@ -46,7 +43,7 @@ def reset(VCS_PATH,repo_id):
         data[repo_id]=[]
     with open(file_path,"w") as f:
         json.dump(data,f)
-    print("RESET SUCCESSFUL")
+    
 
 
     

@@ -30,9 +30,7 @@ def init(VCS_PATH,repo_path):
         except:
             repo_ID=get_repo_id(VCS_PATH)
             data[repo_path]={
-                "repo_id":repo_ID,
-                "commit_id":None,
-                "commit_time":None,
+                "repo_id":repo_ID
             }
             print("VCS INITIALIZED SUCCESSFULLY")
 
