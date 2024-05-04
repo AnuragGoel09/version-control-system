@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import shutil
 import os
+import time
 
 def repo_to_files(files):
     for i in files:
@@ -38,16 +39,31 @@ def copy_files(VCS_PATH,repo_id,files):
     for file in files:
         for i in file_map:
             if file_map[i]==file:
-                print("hrer")
                 os.makedirs(os.path.dirname(file), exist_ok=True)
-                print(i,file)
                 shutil.copy(i,file)
 
 def restore_file(VCS_PATH,repo_id,files):
     
     files=repo_to_files(files)
-    print(files)
     if(check_files_track(VCS_PATH=VCS_PATH,repo_id=repo_id,files=files)):
         copy_files(VCS_PATH,repo_id,files)
     else:
         print("file path does not exist")
+
+def restore_all_files(file_map):
+    for i in file_map:
+        os.makedirs(os.path.dirname(file_map[i]), exist_ok=True)
+        shutil.copy(i,file_map[i])
+
+def checkout(VCS_PATH,repo_id,commit_id):
+    data={}
+    with open(VCS_PATH+"/jsons/commit_status.json","r")as f:
+        data=json.load(f)
+    if repo_id not in data or commit_id not in data[repo_id]["commit"]:
+        print(f"{commit_id} does not exists")
+    else:
+        restore_all_files(data[repo_id]["commit"][commit_id]["file_map"])
+        data[repo_id]["commit_id"]=commit_id
+        data[repo_id]["commit_time"]=time.time()
+    
+    

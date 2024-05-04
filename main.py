@@ -42,6 +42,13 @@ def handle_restore(repo_path,files):
     else:
         print("VCS NOT INITIALIZED")
 
+def handle_checkout(repo_path,commit_id):
+    repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
+    if "repo_id" in repo_info:
+        restore.checkout(VCS_PATH,repo_info["repo_id"],commit_id)
+    else:
+        print("VCS NOT INITIALIZED")
+
 
 if __name__=="__main__":
     repo_path=sys.argv[1].rstrip("\r")
@@ -73,6 +80,8 @@ if __name__=="__main__":
                 exit(0)
             else:
                 handle_restore(repo_path,args[1:])
+        elif args[0]=="checkout" and len(args)==2:
+            handle_checkout(repo_path,args[1])
         else:
             raise Exception()
 
