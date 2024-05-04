@@ -42,11 +42,11 @@ def add_commit(VCS_PATH,commit,repo_id):
         data=json.load(f)
 
     if repo_id not in data:
-        data[repo_id]={"commit":[],
+        data[repo_id]={"commit":{},
                        "commit_id":None,
                        "commit_time":None}
     
-    data[repo_id]["commit"].append(commit)
+    data[repo_id]["commit"][commit["commit_id"]]=commit
     data[repo_id]["commit_id"]=commit["commit_id"]
     data[repo_id]["commit_time"]=commit["commit_time"]
     with open(file_path,"w") as f:

@@ -1,5 +1,5 @@
 from bin import pre_init
-from bin import init , add ,commit
+from bin import init , add ,commit, restore
 import sys
 VCS_PATH="/mnt/d/Projects/version-control-system"
 
@@ -31,10 +31,17 @@ def handle_reset(repo_path):
 def handle_commit(repo_path,message):
     repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
     if "repo_id" in repo_info:
-        print("helo")
         commit.commit(VCS_PATH=VCS_PATH,repo_id=repo_info["repo_id"],message=message)
     else:
         print("VCS NOT INITIALIZED")
+
+def handle_restore(repo_path,files):
+    repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
+    if "repo_id" in repo_info:
+        restore.restore_file(VCS_PATH,repo_info["repo_id"],files)
+    else:
+        print("VCS NOT INITIALIZED")
+
 
 if __name__=="__main__":
     repo_path=sys.argv[1].rstrip("\r")
@@ -60,6 +67,12 @@ if __name__=="__main__":
             else:
                 raise Exception()
             handle_commit(repo_path,message)        
+        elif args[0]=="restore":
+            if(len(args)==1):
+                print("please provide files to restore")
+                exit(0)
+            else:
+                handle_restore(repo_path,args[1:])
         else:
             raise Exception()
 
