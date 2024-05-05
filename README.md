@@ -4,7 +4,8 @@ version control system (VCS) is a lightweight version control system written in 
 ## Features
 - **Committing**: Easily commit changes to your project with a descriptive message.
 - **History/Log**: View the commit history of your project to understand how it has evolved over time.
-- **Restore**: Restore changes from previous commits
+- **Restore**: Restore changes in file to last commit
+- **Checkout**: Move repo to another commmit
 
 ## Installation
 
@@ -33,12 +34,26 @@ To commit the files that are staging run:<br/>
 vcs commit -m <message>
 ```
 
-- **To check history**:<br/>
+- **History**:<br/>
+To check the history of all commits of the repository run:<br/>
 ```
 vcs log
 ```
 
-- **To check status of current repo**:<br/>
+- **Status**:<br/>
+To check status which includes unstaged files and files that are modified:<br/>
 ```
 vcs status
+```
+
+- **Restore file**:<br/>
+To restore changes of a file to last commit run:<br/>
+```
+vcs restore <file1> <file2>
+```
+
+- **Checkout**:<br/>
+To go to another commit run:<br/>
+```
+vcs checkout <commit id>
 ```
