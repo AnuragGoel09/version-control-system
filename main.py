@@ -1,7 +1,8 @@
 from bin import pre_init
 from bin import init , add ,commit, restore, status
 import sys
-VCS_PATH="/mnt/d/Projects/version-control-system"
+import json
+VCS_PATH=""
 
 
 def handle_init(repo_path):
@@ -66,7 +67,8 @@ def handle_log(repo_path):
 
 if __name__=="__main__":
     repo_path=sys.argv[1].rstrip("\r")
-    args=sys.argv[2:]    
+    VCS_PATH=sys.argv[2]
+    args=sys.argv[3:]    
     pre_init.pre_init(VCS_PATH=VCS_PATH)
     try:
         if len(args)==0:

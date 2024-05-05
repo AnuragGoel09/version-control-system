@@ -34,7 +34,6 @@ def add_files(VCS_PATH,repo_id,files):
     with open(file_path,"r") as f:
         data=json.load(f)
     data[repo_id]=union_list
-    print(union_list)
     with open(file_path,"w") as f:
         json.dump(data,f)
 

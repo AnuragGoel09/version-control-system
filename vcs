@@ -1,2 +1,0 @@
-path=$(pwd)
-python3 /mnt/d/Projects/version-control-system/main.py $path $@
