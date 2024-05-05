@@ -11,6 +11,8 @@ version control system (VCS) is a lightweight version control system written in 
 
 version control system (vcs) can be installed as follows:
 - **Clone the repository**: ```git clone https://github.com/AnuragGoel09/version-control-system.git```
+  <br/>
+(before running setup open setup.sh and change the python command that works on your system - default it is python3)
 - **Run Setup from local repository**: ```bash setup.sh```
 
 ## Getting Started
