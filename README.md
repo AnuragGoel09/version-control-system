@@ -8,7 +8,7 @@ version control system (VCS) is a lightweight version control system written in 
 - **Checkout**: Move repo to another commmit
 
 ## Installation
-
+For linux only
 version control system (vcs) can be installed as follows:
 - **Clone the repository**: ```git clone https://github.com/AnuragGoel09/version-control-system.git```
   <br/>
