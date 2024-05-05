@@ -1,5 +1,5 @@
 # version control system (vcs)
-version control system (VCS) is a lightweight version control system written in Python, inspired by Git. It provides a basic commonds for managing your project's version history.
+version control system (VCS) is a lightweight version control system written in Python, inspired by Git. It provides a basic commands for managing your project's version history.
 
 ## Features
 - **Committing**: Easily commit changes to your project with a descriptive message.
