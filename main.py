@@ -1,5 +1,5 @@
 from bin import pre_init
-from bin import init , add ,commit, restore
+from bin import init , add ,commit, restore, status
 import sys
 VCS_PATH="/mnt/d/Projects/version-control-system"
 
@@ -49,6 +49,20 @@ def handle_checkout(repo_path,commit_id):
     else:
         print("VCS NOT INITIALIZED")
 
+def handle_status(repo_path):
+    repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
+    if "repo_id" in repo_info:
+        status.get_status(VCS_PATH,repo_info["repo_id"])
+    else:
+        print("VCS NOT INITIALIZED")
+
+def handle_log(repo_path):
+    repo_info=init.get_repo_info(VCS_PATH=VCS_PATH,repo_path=repo_path)
+    if "repo_id" in repo_info:
+        status.get_log(VCS_PATH,repo_info["repo_id"])
+    else:
+        print("VCS NOT INITIALIZED")
+
 
 if __name__=="__main__":
     repo_path=sys.argv[1].rstrip("\r")
@@ -82,6 +96,10 @@ if __name__=="__main__":
                 handle_restore(repo_path,args[1:])
         elif args[0]=="checkout" and len(args)==2:
             handle_checkout(repo_path,args[1])
+        elif args[0]=="status" and len(args)==1:
+            handle_status(repo_path)
+        elif args[0]=="log" and len(args)==1:
+            handle_log(repo_path)
         else:
             raise Exception()
 

@@ -65,5 +65,7 @@ def checkout(VCS_PATH,repo_id,commit_id):
         restore_all_files(data[repo_id]["commit"][commit_id]["file_map"])
         data[repo_id]["commit_id"]=commit_id
         data[repo_id]["commit_time"]=time.time()
+        with open(VCS_PATH+"/jsons/commit_status.json","w") as f:
+            json.dump(data,f)
     
     
