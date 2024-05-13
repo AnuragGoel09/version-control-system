@@ -2,7 +2,7 @@
 vcs_path=$(pwd)
 
 vcs_content='path=$(pwd)
-python3 '$vcs_path'/main.py '$vcs_path' $path $@
+python3 '$vcs_path'/main.py $path '$vcs_path' $@
 '
 echo "$vcs_content" > vcs
 
